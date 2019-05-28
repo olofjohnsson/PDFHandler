@@ -21,7 +21,7 @@ public class PDFHandler extends javax.swing.JFrame {
      * Creates new form PDFHandler
      */
     public File file;
-    public String path;
+    public String path = "";
     public PDFHandler() {
         initComponents();
     }
@@ -85,14 +85,15 @@ public class PDFHandler extends javax.swing.JFrame {
             File fileLocal = fileBrowser.getSelectedFile();
             file = fileLocal;
             path = file.toString();
+            try {
+            PDFReader newPDF = new PDFReader(path);
+            } catch (IOException ex) {
+            Logger.getLogger(PDFHandler.class.getName()).log(Level.SEVERE, null, ex);
+            }
         } else {
             System.out.println("File access cancelled by user.");
         }
-        try {
-            PDFReader newPDF = new PDFReader(path);
-        } catch (IOException ex) {
-            Logger.getLogger(PDFHandler.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
     }//GEN-LAST:event_jMenuItemOpenPDFActionPerformed
 
     /**
