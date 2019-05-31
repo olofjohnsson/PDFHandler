@@ -30,6 +30,9 @@ public class PDFReader {
                 //System.out.println("Text:" + st);
 
 				// split by whitespace
+                int str1Index = pdfFileInText.indexOf("Matilda");
+                String out1 = pdfFileInText.substring(str1Index+9);
+                System.out.println("out1 = "+out1);
                 String lines[] = pdfFileInText.split("\\r?\\n");
                 for (String line : lines) {
                     System.out.println(line);
