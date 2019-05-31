@@ -21,7 +21,7 @@ public class PDFHandler extends javax.swing.JFrame {
      * Creates new form PDFHandler
      */
     public File file;
-    public String path = "";
+    public String path = "C://temp//namn.pdf";
     public PDFHandler() {
         initComponents();
     }
@@ -43,6 +43,11 @@ public class PDFHandler extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jMenu1.setText("File");
+        jMenu1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenu1MouseClicked(evt);
+            }
+        });
         jMenu1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenu1ActionPerformed(evt);
@@ -76,7 +81,11 @@ public class PDFHandler extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu1ActionPerformed
-         
+        try {
+            PDFReader newPDF = new PDFReader(path);
+            } catch (IOException ex) {
+            Logger.getLogger(PDFHandler.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }//GEN-LAST:event_jMenu1ActionPerformed
 
     private void jMenuItemOpenPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemOpenPDFActionPerformed
@@ -95,6 +104,14 @@ public class PDFHandler extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_jMenuItemOpenPDFActionPerformed
+
+    private void jMenu1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu1MouseClicked
+        try {
+            PDFReader newPDF = new PDFReader(path);
+            } catch (IOException ex) {
+            Logger.getLogger(PDFHandler.class.getName()).log(Level.SEVERE, null, ex);
+            }
+    }//GEN-LAST:event_jMenu1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -129,7 +146,9 @@ public class PDFHandler extends javax.swing.JFrame {
             public void run() {
                 new PDFHandler().setVisible(true);
             }
+            
         });
+        
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
